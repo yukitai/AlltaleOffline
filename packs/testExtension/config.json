@@ -1,0 +1,11 @@
+{
+  "name": "Test Extension",
+  "author": "snxlife",
+  "params": [
+    {
+      "key": "msg",
+      "name": "MSG",
+      "value": "Hello World"
+    }
+  ]
+}
