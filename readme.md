@@ -1,15 +1,15 @@
 ## Content
 
   1. [Introdocution](#Introdocution)
-  2. [Quick Start](#Quick Start)
+  2. [Quick Start](#Quick-Start)
   3. [Devlopment](#Devlopment)
-  4. [Special Thanks](#Special Thanks)
+  4. [Special Thanks](#Special-Thanks)
 
 ## Introdocution
 
   Alltale Offline is developed for [Alltale in Codingclip](https://codingclip.com/project/395).
 
-## Quick Start
+## Quick-Start
 
   1. Clone this repository or download the source code.
   2. Find your folder which you've downloaded.
@@ -20,6 +20,6 @@
 
   *Empty*
 
-## Special Thanks
+## Special-Thanks
 
   *Empty*
