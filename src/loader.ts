@@ -61,7 +61,7 @@ export function loadSpectrum(e: Event,
             bpm: parseInt(config[1]),
             audio: await (async () => {
               const audio = new Audio()
-              audio.src = await zip.files[".mp3"].async("base64")
+              audio.src = `data:audio/mp3;base64,${await zip.files[".mp3"].async("base64")}`
               return audio
             })(),
             speedList: parseSpeedList(spl),

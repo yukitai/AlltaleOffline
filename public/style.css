@@ -1,19 +1,19 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url(/public/Inter/Inter-Regular-9.otf);
+  src: url(./Inter/Inter-Regular-9.otf);
   font-weight: Regular;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url(/public/Inter/Inter-Light-7.otf);
+  src: url(./Inter/Inter-Light-7.otf);
   font-weight: Light;
 }
 
 @font-face {
   font-family: 'Inter Var';
-  src: url(/public/Inter/Inter-var-2.ttf);
+  src: url(./Inter/Inter-var-2.ttf);
 }
 
 html { font-family: 'Inter Var', 'Inter'; }

@@ -3,8 +3,7 @@ import { Hook, util } from './api/util'
 export type SpListItemType = {
   name: string,
   bpm: number,
-  // @ts-ignore
-  audio: Audio,
+  audio: HTMLAudioElement,
   speedList: {
     ts: number[],
     speed: number[],

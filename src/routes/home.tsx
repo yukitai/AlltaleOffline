@@ -20,7 +20,7 @@ export function Home(params: {path: string}) {
               }}>Upload</a>
           </div>
           <div class="p-2">
-            {spList.map(item => <SpListItem spectrum={item} />)}
+            {spList.map((item, id) => <SpListItem id={id} spectrum={item} />)}
           </div>
         </div>
         <div class="w-96 mt-10">

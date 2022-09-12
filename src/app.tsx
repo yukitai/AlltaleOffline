@@ -21,7 +21,7 @@ export function App() {
       <Router>
         <NotFound default />
         <Home path="/" />
-        <Player path="/play" />
+        <Player path="/spec/:id" />
       </Router>
     </>
   )
