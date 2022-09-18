@@ -34,12 +34,17 @@ function parseSpeedList(list: string[]): {ts: number[], speed: number[]} {
   return res
 }
 
-export function loadSpectrum(e: Event, 
+function loadSpectrum(e: Event, 
   addSpectrum: (sp: SpListItemType) => void
 ) {
   const ele = e.target!
   // @ts-ignore
-  if (ele.files && ele.files[0]) {
+  for (const i in ele.files) {
+    load(i as unknown as number)
+  }
+  function load(i: number) {
+    // @ts-ignore
+    if (ele.files && typeof ele.files[i] === "object") {
     const reader = new FileReader()
     reader.onload = function () {
       JSZip.loadAsync(this.result).then(async zip => {
@@ -76,38 +81,50 @@ export function loadSpectrum(e: Event,
       })
     }
     // @ts-ignore
-    reader.readAsBinaryString(ele.files[0])
+    reader.readAsBinaryString(ele.files[i])
+    }
   }
 }
 
-export function loadExtension(e: Event, 
+function loadExtension(e: Event, 
   addExtension: (ex: ExListItemType) => void) {
   const ele = e.target!
   // @ts-ignore
-  if (ele.files && ele.files[0]) {
-    const reader = new FileReader()
-    reader.onload = function () {
-      JSZip.loadAsync(this.result).then(async zip => {
-        if (zip.files["config.json"] && zip.files["index.js"]) {
-          let config = JSON.parse(await loadFile(zip.files["config.json"]))
-          let exBody = await loadFile(zip.files["index.js"])
-          let hook: Hook[] = []
-          let util = {...U, _hooks: hook}
-          util = eval(`(function(Util){"use strict";${exBody};return Util;})`)(util)
-          //console.log(config, loc, ts, te)
-          let ex: ExListItemType = {
-            active: true,
-            name: config.name,
-            util,
-            hook,
-            source: exBody,
-            config: config.params
-          }
-          addExtension(ex)
-        }
-      })
-    }
-    // @ts-ignore
-    reader.readAsBinaryString(ele.files[0])
+  for (const i in ele.files) {
+    load(i as unknown as number)
   }
+  function load(i: number) {
+    // @ts-ignore
+    if (ele.files && typeof ele.files[i] === "object") {
+      const reader = new FileReader()
+      reader.onload = function () {
+        JSZip.loadAsync(this.result).then(async zip => {
+          if (zip.files["config.json"] && zip.files["index.js"]) {
+            let config = JSON.parse(await loadFile(zip.files["config.json"]))
+            let exBody = await loadFile(zip.files["index.js"])
+            let hook: Hook[] = []
+            let util = {...U, _hooks: hook}
+            util = eval(`(function(Util){"use strict";${exBody};return Util;})`)(util)
+            //console.log(config, loc, ts, te)
+            let ex: ExListItemType = {
+              active: true,
+              name: config.name,
+              util,
+              hook,
+              source: exBody,
+              config: config.params
+            }
+            addExtension(ex)
+          }
+        })
+      }
+      // @ts-ignore
+      reader.readAsBinaryString(ele.files[i])
+    }
+  }
+}
+
+export {
+  loadSpectrum,
+  loadExtension,
 }

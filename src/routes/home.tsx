@@ -2,6 +2,7 @@ import { ExListItem } from '../components/extensionListItem'
 import { SpListItem } from '../components/spectrumListItem'
 import { loadSpectrum, loadExtension } from '../loader'
 import { spListHook, exListHook } from '../app'
+import config from '../config'
 
 export function Home(params: {path: string}) {
   
@@ -38,8 +39,17 @@ export function Home(params: {path: string}) {
           </div>
         </div>
       </div>
-      <input class="hidden" type="file" id="spectrum" accept=".zip" onChange={e => loadSpectrum(e, addSpectrum)} />
-      <input class="hidden" type="file" id="extension" accept=".zip" onChange={e => loadExtension(e, addExtension)} />
+      <span class="absolute bottom-2 right-3 text-gray-700 font-bold">
+        Release {config.release} (c) Alltale Team by 9,18 2022
+      </span>
+      <input multiple class="hidden" type="file" id="spectrum" accept=".zip" onChange={e => {
+        loadSpectrum(e, addSpectrum)
+        loadExtension(e, addExtension)
+      }} />
+      <input multiple class="hidden" type="file" id="extension" accept=".zip" onChange={e => {
+        loadSpectrum(e, addSpectrum)
+        loadExtension(e, addExtension)
+      }} />
     </>
   )
 }

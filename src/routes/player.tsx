@@ -2,11 +2,11 @@ import { spListHook, exListHook } from '../app'
 import { Game } from '../runtime/game'
 
 
-export function Player(params: {id: number, path: string}) {
+export function Player(params: {id?: number, path: string}) {
 
   const [spList] = spListHook
   const [exList] = exListHook
-  const id = params.id
+  const id = params.id!
   setTimeout(() => {
     const game = new Game(spList[id], document.getElementById("game-canvas")! as HTMLCanvasElement)
     game.start()

@@ -18,9 +18,13 @@ function loadAudio(path: string) {
 }
 
 const config = {
+  debug: false,
+  release: "1.2.0",
   player: {
     fps: 60,
     speed: 8,
+    key : ["d", "f", "j", "k"],
+    weight: [1.0, 0.8, 0.0]
   },
   sound: {
     tap_hit: loadAudio("/tap_hit.wav"),

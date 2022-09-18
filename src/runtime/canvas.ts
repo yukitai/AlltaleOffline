@@ -41,6 +41,15 @@ class Canvas {
     this.ctx.strokeRect(-1/2*w, -1/2*h, w, h)
     this.ctx.restore()
   }
+  font (font: string) {
+    this.ctx.font = font
+  }
+  text (text: string, x: number, y: number, align: number, color: string) {
+    this.ctx.save()
+    this.ctx.fillStyle = color
+    this.ctx.fillText(text, x - align * this.ctx.measureText(text).width, y)
+    this.ctx.restore()
+  }
   global_alpha (alpha: number) {
     this.ctx.globalAlpha = alpha
   }

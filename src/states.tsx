@@ -16,22 +16,25 @@ type exHookType = [
 ]
 
 export const spectrumHook = (): spHookType => {
-  const [spList, setSpList] = useState<SpListItemType[]>([])
+  let [spList, setSpList] = useState<SpListItemType[]>([])
   function addSpectrum(sp: SpListItemType) {
-    setSpList([
+    let spListNew = [
       ...spList, sp
-    ])
+    ]
+    setSpList(spListNew)
+    spList = spListNew
   }
   function removeSpectrum(idx: number) {
     let spListNew = [...spList]
     spListNew.splice(idx, 1)
     setSpList(spListNew)
+    spList = spListNew
   }
   return [spList, addSpectrum, removeSpectrum]
 }
 
 export const extensionHook = (): exHookType => {
-  const [exList, setExList] = useState<ExListItemType[]>([])
+  let [exList, setExList] = useState<ExListItemType[]>([])
   const switchExState = (idx: number) => {
     let exListNew = [...exList]
     exListNew[idx].active = !exList[idx].active
@@ -43,9 +46,11 @@ export const extensionHook = (): exHookType => {
     setExList(exListNew)
   }
   function addExtension(ex: ExListItemType) {
-    setExList([
+    let exListNew = [
       ...exList, ex
-    ])
+    ]
+    setExList(exListNew)
+    exList = exListNew
   }
   function removeExtension(idx: number) {
     let spListNew = [...exList]
